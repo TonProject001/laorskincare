@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>จัดลำดับสกินแคร์</title>
+    <style>
+        :root {
+            --primary: #95C6B1;
+            --secondary: #FFF3E6;
+            --accent: #FF9A76;
+            --text: #4A4A4A;
+            --light: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #FFF3E6 0%, #FFE5D9 100%);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .selection-group {
+            background: var(--secondary);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            color: var(--accent);
+            margin-top: 0;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            font-size: 1em;
+            margin-top: 10px;
+            background: var(--light);
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .product-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .product-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-item input[type="checkbox"] {
+            margin-right: 10px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        button {
+            background: var(--primary);
+            color: var(--light);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(149, 198, 177, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(149, 198, 177, 0.4);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--secondary);
+            border-radius: 15px;
+        }
+
+        .result ol {
+            padding-left: 20px;
+        }
+
+        .result li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(74, 74, 74, 0.1);
+        }
+
+        .warning {
+            color: var(--accent);
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>✨ จัดลำดับสกินแคร์ของคุณ ✨</h2>
+        
+        <div class="selection-group">
+            <h3>🌿 เลือกประเภทผิวของคุณ</h3>
+            <select id="skinType">
+                <option value="normal">ผิวปกติ (ธรรมดา)</option>
+                <option value="dry">ผิวแห้ง</option>
+                <option value="oily">ผิวมัน</option>
+                <option value="combination">ผิวผสม</option>
+                <option value="sensitive">ผิวบอบบางแพ้ง่าย</option>
+            </select>
+        </div>
+
+        <div class="selection-group">
+            <h3>🌙 เลือกช่วงเวลา</h3>
+            <select id="timeOfDay">
+                <option value="morning">ตอนเช้า</option>
+                <option value="evening">ตอนเย็น</option>
+            </select>
+        </div>
+
+        <div class="selection-group">
+            <h3>💫 เลือกผลิตภัณฑ์ที่คุณต้องการใช้</h3>
+            <div class="product-list">
+                <label class="product-item">
+                    <input type="checkbox" value="cleansing-oil"> Cleansing Oil
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="cleansing-mousse"> Cleansing Mousse
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="exo-cica"> Exo Cica
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="vivid"> Vivid
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="niacinamide"> Niacinamide
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="brightly"> Brightly
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="barrier"> Barrier
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="sunscreen"> กันแดด
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="de-nuit-c"> De Nuit C
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="aha"> AHA
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="bha"> BHA
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="retinight"> Retinight
+                </label>
+                <label class="product-item">
+                    <input type="checkbox" value="night-repair"> Night Repair
+                </label>
+            </div>
+        </div>
+
+        <button onclick="organizeRoutine()">✨ เรียงลำดับ ✨</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const routines = {
+            normal: {
+                morning: ['cleansing-oil', 'cleansing-mousse', 'exo-cica', 'vivid', 'niacinamide', 'brightly', 'barrier', 'sunscreen'],
+                evening: ['cleansing-oil', 'cleansing-mousse', 'de-nuit-c', 'aha', 'exo-cica', 'retinight', 'night-repair', 'barrier']
+            },
+            dry: {
+                morning: ['cleansing-mousse', 'exo-cica', 'vivid', 'niacinamide', 'brightly', 'barrier', 'sunscreen'],
+                evening: ['cleansing-oil', 'cleansing-mousse', 'de-nuit-c', 'aha', 'exo-cica', 'retinight', 'night-repair', 'barrier']
+            },
+            oily: {
+                morning: ['cleansing-mousse', 'vivid', 'niacinamide', 'brightly', 'barrier', 'de-nuit-c', 'sunscreen'],
+                evening: ['cleansing-oil', 'cleansing-mousse', 'de-nuit-c', 'bha', 'exo-cica', 'retinight', 'barrier']
+            },
+            combination: {
+                morning: ['cleansing-mousse', 'vivid', 'niacinamide', 'brightly', 'barrier', 'de-nuit-c', 'sunscreen'],
+                evening: ['cleansing-oil', 'cleansing-mousse', 'bha', 'exo-cica', 'retinight', 'night-repair', 'barrier']
+            },
+            sensitive: {
+                morning: ['cleansing-mousse', 'exo-cica', 'vivid', 'barrier', 'de-nuit-c', 'sunscreen'],
+                evening: ['cleansing-oil', 'cleansing-mousse', 'exo-cica', 'night-repair', 'barrier']
+            }
+        };
+
+        function organizeRoutine() {
+            const skinType = document.getElementById('skinType').value;
+            const timeOfDay = document.getElementById('timeOfDay').value;
+            const selectedProducts = Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value);
+            
+            const recommendedRoutine = routines[skinType][timeOfDay];
+            let result = '<h3>🌸 ลำดับการใช้ผลิตภัณฑ์ของคุณ</h3><ol>';
+            
+            const sortedProducts = [...selectedProducts].sort((a, b) => {
+                return recommendedRoutine.indexOf(a) - recommendedRoutine.indexOf(b);
+            });
+
+            sortedProducts.forEach(product => {
+                const isRecommended = recommendedRoutine.includes(product);
+                const productName = getProductName(product);
+                result += `<li>${productName}${!isRecommended ? ' <span class="warning">⚠️ ไม่แนะนำสำหรับผิวของคุณหรือช่วงเวลานี้</span>' : ''}</li>`;
+            });
+
+            result += '</ol>';
+            document.getElementById('result').innerHTML = result;
+        }
+
+        function getProductName(productId) {
+            const names = {
+                'cleansing-oil': 'Cleansing Oil',
+                'cleansing-mousse': 'Cleansing Mousse',
+                'exo-cica': 'Exo Cica',
+                'vivid': 'Vivid',
+                'niacinamide': 'Niacinamide',
+                'brightly': 'Brightly',
+                'barrier': 'Barrier',
+                'sunscreen': 'กันแดด',
+                'de-nuit-c': 'De Nuit C',
+                'aha': 'AHA',
+                'bha': 'BHA',
+                'retinight': 'Retinight',
+                'night-repair': 'Night Repair'
+            };
+            return names[productId] || productId;
+        }
+    </script>
+</body>
+</html>
